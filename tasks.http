@@ -1,0 +1,4 @@
+@api = http://localhost:3200/tasks;
+
+GET {{api}}
+
