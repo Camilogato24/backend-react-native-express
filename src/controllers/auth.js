@@ -1,9 +1,32 @@
-import { connectToDatabase } from "../connection/database";
-import { User, Task } from "../models/models";
+import { User } from "../models/models";
 import bcrypt from "bcrypt";
-import { sequelize } from "../connection/database";
-export const login = (req, res) => {
-  res.send("Login Success!!!");
+
+export const login = async (req, res) => {
+  const { password, username } = req.body;
+  try {
+    const user = await User.findOne({where: {username: username}})
+    if(!user) {
+      return res.status(400).json({
+        msg: `No existe el usuario ${username} `
+      })
+    }
+    const validatePass = await bcrypt.compare(password, user.password);
+    if(!validatePass) {
+      return res.status(400).json({
+        msg: `Has olvidado tu contraseña?, contraseña incorrecta. `
+      })
+    }
+   
+    res.status(200).json({
+      msg: `Usuario ${username} registrado exitosamente`
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      msg: `Ha ocurrido un problema al crear el usuario`,
+      error
+    })
+  }
 };
 
 export const register = async (req, res) => {
