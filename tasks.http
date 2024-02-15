@@ -1,4 +1,21 @@
-@api = http://localhost:3200/tasks;
+@api = http://localhost:3200/tasks
+@apiRegister = http://localhost:3200/register
+
 
 GET {{api}}
 
+
+###
+POST {{api}}
+
+
+###
+
+POST {{apiRegister}}
+content-type: application/json
+
+{
+    "username": "Cami",
+    "password": "123456789",
+    "email": "email@email.com"
+}

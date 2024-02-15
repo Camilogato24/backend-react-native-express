@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../connection/database";
+import {sequelize} from "../connection/database";
 
 export const Task = sequelize.define(
   "Task",
@@ -26,17 +26,17 @@ export const Task = sequelize.define(
     },
   },
   {
-    timestamps: false,
+    timestamps: false
   }
 );
 
-export const User = sequelize.define("User", {
+export const User = sequelize.define("Uzer", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  nombre: {
+  username: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -45,7 +45,7 @@ export const User = sequelize.define("User", {
     allowNull: false,
     unique: true,
   },
-  contrasena: {
+  password: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
@@ -58,5 +58,6 @@ export const User = sequelize.define("User", {
       },
     },
   },
-  timestamps: false,
+}, {
+  timestamps: false // Esta línea debe estar aquí, fuera de la definición de atributos
 });
