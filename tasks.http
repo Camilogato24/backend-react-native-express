@@ -1,21 +1,45 @@
 @api = http://localhost:3200/tasks
 @apiRegister = http://localhost:3200/register
+@apiLogin = http://localhost:3200/login
 
 
 GET {{api}}
-
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnRoYSIsImlhdCI6MTcwODEwNjMyOSwiZXhwIjoxNzA4MTA5OTI5fQ.fmIvXIWWVeas2oy6-WSheQ5ak1gBg_A1jYNwKCTN3B4
 
 ###
 POST {{api}}
+content-type: application/json
 
+{
+    "titulo": "Tarea 1",
+    "usuario_creador_id": 1
+}
 
 ###
-
 POST {{apiRegister}}
 content-type: application/json
 
 {
-    "username": "Cami",
+    "username": "Martha",
     "password": "123456789",
-    "email": "email@email.com"
+    "email": "martha@email.com"
 }
+
+###
+POST {{apiLogin}}
+content-type: application/json
+
+{
+    "username": "Martha",
+    "password": "123456789"
+}
+
+
+####
+
+
+GET {{api}}/count
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnRoYSIsImlhdCI6MTcwODEwNjMyOSwiZXhwIjoxNzA4MTA5OTI5fQ.fmIvXIWWVeas2oy6-WSheQ5ak1gBg_A1jYNwKCTN3B4
+

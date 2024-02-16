@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import {sequelize} from "../connection/database";
 
 export const Task = sequelize.define(
-  "Task",
+  "Tarea",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -23,6 +23,22 @@ export const Task = sequelize.define(
     },
     fecha_completado: {
       type: DataTypes.DATE,
+    },
+    usuario_creador_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+        key: "id",
+      },
+    },
+    usuario_asignado_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: User,
+        key: "id",
+      },
     },
   },
   {

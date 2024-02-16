@@ -7,9 +7,10 @@ import {
   getTasksCount,
   updateTasks,
 } from "../controllers/tasks";
+import validateToken from "../routes/validate-token";
 const tasksRouter = Router();
 
-tasksRouter.get("/tasks", getTasks);
+tasksRouter.get("/tasks", validateToken, getTasks);
 tasksRouter.get("/tasks/count", getTasksCount);
 tasksRouter.get("/tasks/:id", getTask);
 tasksRouter.post("/tasks", createTasks);
