@@ -11,10 +11,10 @@ import validateToken from "../routes/validate-token";
 const tasksRouter = Router();
 
 tasksRouter.get("/tasks", validateToken, getTasks);
-tasksRouter.get("/tasks/count", getTasksCount);
-tasksRouter.get("/tasks/:id", getTask);
-tasksRouter.post("/tasks", createTasks);
-tasksRouter.delete("/tasks/:id", deleteTasks);
-tasksRouter.put("/tasks/:id", updateTasks);
+tasksRouter.get("/tasks/count", validateToken, getTasksCount);
+tasksRouter.get("/tasks/:id", validateToken, getTask);
+tasksRouter.post("/tasks", validateToken, createTasks);
+tasksRouter.delete("/tasks/:id", validateToken, deleteTasks);
+tasksRouter.put("/tasks/:id", validateToken, updateTasks);
 
 export default tasksRouter;

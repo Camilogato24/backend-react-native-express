@@ -2,13 +2,27 @@
 @apiRegister = http://localhost:3200/register
 @apiLogin = http://localhost:3200/login
 
+@apiUsers = http://localhost:3200/users
+
+
+### GET ALL TASKS
 
 GET {{api}}
 Content-Type: application/xml
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnRoYSIsImlhdCI6MTcwODEwNjMyOSwiZXhwIjoxNzA4MTA5OTI5fQ.fmIvXIWWVeas2oy6-WSheQ5ak1gBg_A1jYNwKCTN3B4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnRoYSIsImlhdCI6MTcwODExMjM4MiwiZXhwIjoxNzA4MTE1OTgyfQ.7BboDu8PNXMyIfe7yUPuPdRLtdR0e0XWJK8nOzodK9k
 
-###
+### CREATE A TASK
 POST {{api}}
+content-type: application/json
+
+{
+    "titulo": "Tarea 2",
+    "usuario_creador_id": 1
+}
+
+
+### GET SPECIFIC TASK
+GET {{api}}/1
 content-type: application/json
 
 {
@@ -16,7 +30,7 @@ content-type: application/json
     "usuario_creador_id": 1
 }
 
-###
+### CREATE A USER
 POST {{apiRegister}}
 content-type: application/json
 
@@ -26,7 +40,7 @@ content-type: application/json
     "email": "martha@email.com"
 }
 
-###
+### LOGIN 
 POST {{apiLogin}}
 content-type: application/json
 
@@ -36,10 +50,14 @@ content-type: application/json
 }
 
 
-####
-
-
+#### GET TOTAL TASKS
 GET {{api}}/count
+Content-Type: application/xml
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnRoYSIsImlhdCI6MTcwODEwNjMyOSwiZXhwIjoxNzA4MTA5OTI5fQ.fmIvXIWWVeas2oy6-WSheQ5ak1gBg_A1jYNwKCTN3B4
+
+
+#### GET TOTAL USERS
+GET {{apiUsers}}
 Content-Type: application/xml
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcnRoYSIsImlhdCI6MTcwODEwNjMyOSwiZXhwIjoxNzA4MTA5OTI5fQ.fmIvXIWWVeas2oy6-WSheQ5ak1gBg_A1jYNwKCTN3B4
 
