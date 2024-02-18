@@ -1,9 +1,11 @@
 import { Sequelize } from 'sequelize';
+import { config } from "../config";
 
-export const sequelize = new Sequelize('railway', 'root', '4A-A1GfGe13b3heCA6-3hB5HbH36ehha', {
-    host: 'monorail.proxy.rlwy.net',
+
+export const sequelize = new Sequelize(config.database, config.user, config.password, {
+    host: config.host,
     dialect: 'mysql',
-    port: '23051',
+    port: config.port,
   });
 
 export async function connectToDatabase() {

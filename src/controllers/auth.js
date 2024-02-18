@@ -1,6 +1,8 @@
 import { User } from "../models/models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { config } from "../config";
+
 
 export const login = async (req, res) => {
   const { password, username } = req.body;
@@ -18,7 +20,7 @@ export const login = async (req, res) => {
       })
     }
 
-    const token = jwt.sign({ username: username }, 'VQ54u361L!aJnIKoY*S', { expiresIn: '1h' });
+    const token = jwt.sign({ username: username }, config.secret, { expiresIn: '1h' });
    
     res.status(200).json({token})
   } catch (error) {
@@ -41,7 +43,6 @@ export const register = async (req, res) => {
     }
     const hashedPass = await bcrypt.hash(password, 10);
     await User.create({ username, email, password: hashedPass });
-    console.log("usuario registrado correctamente", username);
     res.status(200).json({
       msg: `Usuario ${username} registrado exitosamente`
     })

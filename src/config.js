@@ -1,10 +1,10 @@
 import { config as dotenv } from "dotenv";
 dotenv();
-console.log(process.env.NICKNAME)
 export const config = {
-    host: "monorail.proxy.rlwy.net",
-    user: "root",
-    password: "4A-A1GfGe13b3heCA6-3hB5HbH36ehha",
-    database: "db_habitask",
-    secret: "VQ54u361L!aJnIKoY*S"
+    host: process.env.HOST,
+    user: process.env.USER_DB,
+    password: process.env.PASSWORD_DB,
+    database: process.env.DATABASE_NAME,
+    secret: process.env.SECRET_TOKEN,
+    port: process.env.PORT_DB
 }
