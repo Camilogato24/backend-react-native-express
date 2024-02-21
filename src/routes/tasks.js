@@ -10,7 +10,7 @@ import {
 import validateToken from "../routes/validate-token";
 const tasksRouter = Router();
 
-tasksRouter.get("/tasks", validateToken, getTasks);
+tasksRouter.get("/", getTasks);
 tasksRouter.get("/tasks/count", validateToken, getTasksCount);
 tasksRouter.get("/tasks/:id", validateToken, getTask);
 tasksRouter.post("/tasks", validateToken, createTasks);
