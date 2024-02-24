@@ -1,5 +1,6 @@
 import app from "./app.js";
 import "./connection/database.js";
- 
-app.listen(3200);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);
 console.log("server on port 3200");
