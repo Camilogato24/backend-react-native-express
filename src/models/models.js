@@ -1,5 +1,38 @@
 import { DataTypes } from "sequelize";
-import {sequelize} from "../connection/database";
+import {sequelize} from "../connection/database.js";
+
+export const User = sequelize.define("Uzer", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      is: {
+        args: [
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$",
+          "i",
+        ],
+        msg: "La contraseña debe contener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número y un carácter especial.",
+      },
+    },
+  },
+}, {
+  timestamps: false // Esta línea debe estar aquí, fuera de la definición de atributos
+});
+
 
 export const Task = sequelize.define(
   "Tarea",
@@ -45,35 +78,3 @@ export const Task = sequelize.define(
     timestamps: false
   }
 );
-
-export const User = sequelize.define("Uzer", {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      is: {
-        args: [
-          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$",
-          "i",
-        ],
-        msg: "La contraseña debe contener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número y un carácter especial.",
-      },
-    },
-  },
-}, {
-  timestamps: false // Esta línea debe estar aquí, fuera de la definición de atributos
-});

@@ -1,6 +1,6 @@
 import express from "express";
-import tasksRouter from "./routes/tasks"
-import authRouter from "./routes/auth"
+import tasksRouter from "./routes/tasks.js"
+import authRouter from "./routes/auth.js"
 import cors from "cors";
 import morgan from "morgan";
 

@@ -1,5 +1,5 @@
-import { connectToDatabase } from "../connection/database";
-import { User, Task } from "../models/models";
+import { connectToDatabase } from "../connection/database.js";
+import { User, Task } from "../models/models.js";
 
 User.hasMany(Task, { as: 'TareasCreadas', foreignKey: 'usuario_creador_id' });
 User.hasMany(Task, { as: 'TareasAsignadas', foreignKey: 'usuario_asignado_id' });

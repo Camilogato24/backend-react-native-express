@@ -1,7 +1,7 @@
-import { User } from "../models/models";
+import { User } from "../models/models.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { config } from "../config";
+import { config } from "../config.js";
 
 
 export const login = async (req, res) => {

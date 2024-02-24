@@ -6,8 +6,8 @@ import {
   getTasks,
   getTasksCount,
   updateTasks,
-} from "../controllers/tasks";
-import validateToken from "../routes/validate-token";
+} from "../controllers/tasks.js";
+import validateToken from "../routes/validate-token.js";
 const tasksRouter = Router();
 
 tasksRouter.get("/", getTasks);
